@@ -2,3 +2,38 @@
 Message Handler
 https://www.asp.net/web-api/overview/advanced/httpclient-message-handlers
 
+
+
+
+POSTMAN API TEST
+
+======================= GET Request ======================
+
+URL : https://localhost:44301/api/payment
+Method : GET
+Authorization : Basic Auth
+				Username : Harish
+				Password : Chand
+Header :
+		APIKEY : API2020@DEMOKEY
+
+
+
+======================= POST Request ======================
+URL: https://localhost:44301/api/payment
+Method : POST
+Authorization : Basic Auth
+				Username : Harish
+				Password : Chand
+Header :
+		APIKEY : API2020@DEMOKEY
+
+BODY
+
+{
+  "CustomerId":451,
+   "Amount":"1522",
+   "CustomerName":"Harish Chand"
+}
+
+

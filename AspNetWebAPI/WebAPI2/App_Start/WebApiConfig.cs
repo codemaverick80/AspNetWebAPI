@@ -15,6 +15,8 @@ namespace WebAPI2
 
             config.Filters.Add(new Filters.AuthenticationFilter());
 
+            config.Filters.Add(new Filters.ValidateModelAttribute());
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 
