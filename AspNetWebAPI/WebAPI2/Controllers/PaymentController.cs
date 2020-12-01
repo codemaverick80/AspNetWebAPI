@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web.Http;
 using WebAPI2.Models;
 
@@ -44,12 +47,46 @@ namespace WebAPI2.Controllers
 
         }
 
+
+        // GET api/users
+        [HttpGet]
+        [Route("api/users")]
+        public async Task<IHttpActionResult> GetAsync(CancellationToken ct)
+        {
+            //await Task.Delay(5000, ct);
+            try
+            {
+                List<User> users = new List<User>();
+
+                using (HttpClient client = new HttpClient())
+                {
+                    var response = await client.GetAsync("https://jsonplaceholder.typicode.com/users", ct);
+                    if (response.IsSuccessStatusCode == true)
+                    {
+
+                        string res = await response.Content.ReadAsStringAsync();
+                        users = JsonConvert.DeserializeObject<List<User>>(res);
+                    }
+                    return Ok(users);
+                }
+
+            }
+            catch (TaskCanceledException ex)
+            {
+                throw;
+            }
+
+        }
+
+
+
         // GET api/payment/5
         public string Get(int id)
         {
             return "value";
         }
 
+        // POST api/payment
         [HttpPost]
         public PaymentServiceResponse<PaymentResponse> Post([FromBody]PaymentRequest request)
         {
@@ -90,5 +127,20 @@ namespace WebAPI2.Controllers
         public void Delete(int id)
         {
         }
+   
+    
     }
+
+
+
+    public class User
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
+
+    }
+
+
 }

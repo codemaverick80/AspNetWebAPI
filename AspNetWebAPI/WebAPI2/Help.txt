@@ -1,8 +1,13 @@
-﻿
-Message Handler
-https://www.asp.net/web-api/overview/advanced/httpclient-message-handlers
+﻿############### ASP.NET Web API 2 ###############
 
+############### Testing API ###############
 
+1. Open the project in Visual studio 2019
+2. Run the project (F5)
+3. Api will open in browser (https://localhost:44301/) and if you see error as below, don't worry:
+	HTTP Error 403.14 - Forbidden
+	The Web server is configured to not list the contents of this directory.
+4. Use api endpoint as https://localhost:44301/api/payment
 
 
 POSTMAN API TEST
@@ -36,4 +41,8 @@ BODY
    "CustomerName":"Harish Chand"
 }
 
+
+########################################################################
+Message Handler
+https://www.asp.net/web-api/overview/advanced/httpclient-message-handlers
 
